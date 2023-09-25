@@ -1,11 +1,11 @@
 # 🏆 Backend 🔙🔚 RestAPI com Node.js integrado 🤝 ao MongoDB 
->> Projeto criado na aula de Laboratório de Banco de Dados
+> Projeto criado na aula de Laboratório de Banco de Dados
 
 ## Integrantes 👳‍♂️👼💂‍♂️
->> André Bernardes dos Santos
->> Luis Otávio Campos Bazzo
+* André Bernardes dos Santos
+* Luis Otávio Campos Bazzo
 
-## 💡Dicas
+## Dicas 💡
 - Clone o projeto
 - Crie o arquivo .env contendo a sua string de conexão ao MongoDB
 - Instale as dependências com ```npm i```
