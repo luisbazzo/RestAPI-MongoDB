@@ -1,7 +1,11 @@
-import express from 'exoress';
+import express from 'express';
 
 const app = express();
 const port = 2002;
+
+//import das rotas do app
+import rotasPratos from './routes/pratos.js';
+import rotasBebidas from './routes/bebidas.js';
 
 app.use(express.json()); //irá fazer o parse de arquivos JSON
 
@@ -12,6 +16,10 @@ app.use('/', express.static('public'));
 app.use('/favicon.ico', express.static('public/favicon.ico'));
 
 //Rotas de API
+app.use('/api/pratos', rotasPratos);
+
+app.use('/api/bebidas', rotasBebidas);
+
 app.get('/api', (req, res) => {
     res.status(200).json(
         {

@@ -1,12 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>RESTtaurante - RestAPI com MongoDB</title>
-    </head>
-    <body>
-        
-    </body>
+<!doctype html>
+<html lang="en" style="font-family: 'Poppins', sans-serif;">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RESTtaurante - RestAPI com MongoDB</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .clear{
+            clear: both;
+        }
+
+        ul li a{
+            text-decoration: none;
+            color: white;
+        }
+
+        @media screen and (max-width:1650px) {
+            .logo{
+                display: none;
+            }
+        }
+    </style>
+</head>
+  <body class="bg-black">
+    <div class="container-fluid">
+        <header>
+            <div class="row">
+                <div class="col-4 ms-5">
+                    <img src="images/restaurant.png" class="rounded float-start" style="max-width: 120px; max-height: 120px;">
+                    <h2 class="text-center me-5 mt-2 logo" style="color: white; font-size: 50px; font-weight: 500;"><span style="font-size: 75px;" class="logo">REST</span>taurante</h2>
+                </div>
+                <div class="col-6 text-end" style="float: right; position: relative; top: 20px; padding: 0 20px;">
+                    <ul style="list-style-type: none; color: white; font-size: 30px; font-weight: 500;">
+                        <li style="position: relative; bottom: -25px; z-index: 777;"><a href="/api/pratos">Comidas</a></li>
+                        <li style="position: relative; right: -150px; top: -20px;"><a href="/api/bebidas">Bebidas</a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div><!--clear-->
+            </div><!--row-->
+            <div class="container text-center" style="position: relative; top: 130px;"">
+                <div class="row mt-5 justify-content-evenly">
+                    <div class="col-4 align-middle">
+                        <div class="card" style="min-width: 18rem;">
+                        <img src="images/receitas-de-comidas-italianas.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title" style="font-size: 30px; font-weight: 500;">Comidas</h5>
+                          <p class="card-text">Cheque a variedade de comidas que o nosso restaurante tem!</p>
+                          <a href="/api/pratos" class="btn btn-dark">Ver comidas</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4 align-middle">
+                        <div class="card" style="min-width: 18rem;">
+                            <img src="images/bebidas.png" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title" style="font-size: 30px; font-weight: 500;">Bebidas</h5>
+                              <p class="card-text">Dê uma olhada nas bebidas que preparamos para você!</p>
+                              <a href="/api/bebidas" class="btn btn-dark">Ver bebidas</a>
+                            </div>
+                          </div>
+                    </div>
+                </div><!--row-->
+            </div><!--container-->
+        </header>
+    </div><!--container-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
 </html>

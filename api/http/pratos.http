@@ -1,0 +1,72 @@
+// Teste das requisições REST dos pratos
+@baseURL = http://localhost:2002/api/pratos
+
+// GET - Lista todos os pratos
+GET {{baseURL}}
+Content-Type: application/json
+
+###
+// GET - Lista um prato pelo id
+GET {{baseURL}}/id/6519fc9afe5941692be89f0c
+Content-Type: application/json
+
+###
+// GET - Lista um prato que tem o nome informado e um tempo de preparo maior que 10 minutos
+// e diferente de 40 minutos
+GET {{baseURL}}/nome/pic
+Content-Type: application/json
+
+###
+// DELETE - Apaga um prato pelo id
+DELETE {{baseURL}}/651a058c6cda59678efcc8dd
+Content-Type: application/json
+
+###
+// POST - Insere um novo prato
+POST {{baseURL}}
+Content-Type: application/json
+
+{
+    "nome": "picanha",
+    "origem": "brasileira",
+    "cozinheiro": "fernando",
+    "tempo_preparo": 35,
+    "data_cardapio": "2015-08-23",
+    "tipo":"",
+    "preço":120.50
+}
+
+###
+// PUT - Altera um prato
+PUT {{baseURL}}
+Content-Type: application/json
+
+{
+    "_id": "6519fc9afe5941692be89f0c",
+    "nome": "macarronada",
+    "tipo": [
+        "macarronada simples",
+        "macarronada bolonhesa",
+        "macarronada calabresa"
+    ],
+    "cozinheiro": "leticia",
+    "tempo_preparo": 25,
+    "data_cardapio": "2016-07-05",
+    "preços": {
+        "macarronada simples": {
+            "pequena": 25.5,
+            "media": 35.5,
+            "grande": 45.5
+        },
+        "macarronada bolonhesa": {
+            "pequena": 35.5,
+            "media": 45.5,
+            "grande": 55.5
+        },
+        "macarronada calabresa": {
+            "pequena": 15.5,
+            "media": 25.5,
+            "grande": 35.5
+        }
+    }
+}

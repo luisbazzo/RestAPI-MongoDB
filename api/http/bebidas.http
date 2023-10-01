@@ -1,0 +1,55 @@
+// Teste das requisições REST das bebidas
+@baseURL = http://localhost:2002/api/bebidas
+
+// GET - Lista todas as bebidas
+GET {{baseURL}}
+Content-Type: application/json
+
+###
+// GET - Lista uma bebida pelo id
+GET {{baseURL}}/id/6519fe966d3fa74259f918a0
+Content-Type: application/json
+
+###
+// GET - Lista uma bebida que tenha um preço maior que 20 e menor que 50 com
+// base no nome fornecido
+GET {{baseURL}}/nome/whis
+Content-Type: application/json
+
+###
+// DELETE - Apaga uma bebida pelo id
+DELETE {{baseURL}}/651a03386cda59678efcc8db
+Content-Type: application/json
+
+###
+// POST - Insere uma nova bebida
+POST {{baseURL}}
+Content-Type: application/json
+
+{
+    "nome": "whisky",
+    "qtde_ml": 1000,
+    "data_adição": "2016-08-17",
+    "tipo":"",
+    "preço":40.50
+}
+
+###
+// PUT - Altera uma bebida
+PUT {{baseURL}}
+Content-Type: application/json
+
+{
+    "_id": "6519fe966d3fa74259f918a0",
+    "nome": "agua",
+    "qtde_ml": 550,
+    "data_adição": "2015-07-05",
+    "tipo": [
+        "com gás",
+        "sem gás"
+    ],
+    "preço": {
+        "com gás": 5.5,
+        "sem gás": 4.5
+    }
+}
