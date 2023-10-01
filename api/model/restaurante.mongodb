@@ -1,0 +1,30 @@
+use('pratos')
+
+db.pratos.insertOne({
+    "nome": "macarronada",
+    "tipo": "italiano",
+    "cozinheiro": "leticia",
+    "tempo_preparo": 30.15,
+    "data_cardapio": "2016-07-05",
+    "tipo":["macarronada simples", "macarronada bolonhesa", "macarronada calabresa"],
+    "preços":{
+        "macarronada simples":{
+            "pequena": 25.50,
+        "media": 35.50,
+        "grande": 45.50
+        },
+        "macarronada bolonhesa":{
+            "pequena": 35.50,
+        "media": 45.50,
+        "grande": 55.50
+        },
+        "macarronada calabresa":{
+            "pequena": 15.50,
+        "media": 25.50,
+        "grande": 35.50
+        }
+
+    }
+        
+
+})

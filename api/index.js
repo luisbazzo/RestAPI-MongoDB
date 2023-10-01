@@ -1,7 +1,10 @@
-import express from 'exoress';
+import express from 'express';
 
-const app = express();
-const port = 2002;
+const app = express()
+const port = 2002
+import rotaspratos from './routes/pratos.js'
+
+
 
 app.use(express.json()); //irá fazer o parse de arquivos JSON
 
@@ -9,9 +12,12 @@ app.use(express.json()); //irá fazer o parse de arquivos JSON
 app.use('/', express.static('public'));
 
 //Configura o favicon
-app.use('/favicon.ico', express.static('public/favicon.ico'));
+app.use('/favicon.ico', express.static('public/images/favicon.png'));
+app.use('/favicon.ico', express.static('public/images/restaurante.jng'));
 
 //Rotas de API
+app.use('api/pratos', rotaspratos)
+
 app.get('/api', (req, res) => {
     res.status(200).json(
         {
