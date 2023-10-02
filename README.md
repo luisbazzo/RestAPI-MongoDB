@@ -2,7 +2,7 @@
 > Projeto criado na aula de Laboratório de Banco de Dados
 
 ## Link da API pública ✈️🖥️
-https://restaurante-rest-mongodb.vercel.app/
+https://rest-taurante.vercel.app/
 
 ## Integrantes 👳‍♂️👼💂‍♂️
 * André Bernardes dos Santos
