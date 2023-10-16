@@ -6,6 +6,7 @@ const port = 2002;
 //import das rotas do app
 import rotasPratos from './routes/pratos.js';
 import rotasBebidas from './routes/bebidas.js';
+import rotasUsuarios from './routes/usuarios.js';
 
 app.use(express.json()); //irá fazer o parse de arquivos JSON
 
@@ -17,8 +18,8 @@ app.use('/favicon.ico', express.static('public/favicon.ico'));
 
 //Rotas de API
 app.use('/api/pratos', rotasPratos);
-
 app.use('/api/bebidas', rotasBebidas);
+app.use('/api/usuarios', rotasUsuarios);
 
 app.get('/api', (req, res) => {
     res.status(200).json(

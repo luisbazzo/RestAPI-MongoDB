@@ -1,0 +1,16 @@
+use('restaurante')
+db.usuarios.insertOne({
+    'nome':'Barry Allen',
+    'email': 'barryallen@hotmail.com',
+    'senha': 'dadada',
+    'ativo': true,
+    'tipo': 'Cliente',
+    'avatar': 'https://ui-avatars.com/api/?name=Barry+Allen&background=F00&color=FF0'
+})
+
+//criando um índice único
+db.usuarios.createIndex({'email':1}, {unique:true})
+
+//exemplo de listagem
+use('restaurante')
+db.usuarios.find({},{senha: 0})

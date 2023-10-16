@@ -1,0 +1,16 @@
+//Teste do endpoint usuarios
+
+@baseURL = https://localhost:2002/api/usuarios
+
+###
+POST {{baseURL}}
+Content-Type: application/json
+
+{
+    "nome": "Lucas Santos",
+    "email": "lucassantos@lucassantos.com",
+    "senha": "luca$S4ntos",
+    "ativo": true,
+    "tipo": "Cliente",
+    "avatar": "https://ui-avatars.com/api/?name=Lucas+Santos"
+}
