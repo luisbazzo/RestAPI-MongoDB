@@ -6,6 +6,8 @@ const router = express.Router()
 const {db, ObjectId} = await connectToDatabase()
 const nomeCollection = 'pratos'
 
+import auth from '../middleware/auth.js'
+
 const validaPrato = [
     check('data_cardapio')
     .isLength({min: 10, max: 10}).withMessage('A data deve seguir o padrão aaaa-mm-dd'),
@@ -22,7 +24,7 @@ const validaPrato = [
  * GET /api/pratos
  * Lista todos os pratos oferecidos pelo restaurante
  */
-router.get('/', async(req, res) => {
+router.get('/', auth, async(req, res) => {
     try{
         db.collection(nomeCollection).find().sort({nome: 1}).toArray((err, docs) => {
             if(!err){
@@ -44,7 +46,7 @@ router.get('/', async(req, res) => {
  * GET /api/pratos/id/:id
  * Lista um prato pelo id
  */
-router.get('/id/:id', async(req, res)=> {
+router.get('/id/:id', auth, async(req, res)=> {
     try{
         db.collection(nomeCollection).find({'_id': {$eq: ObjectId(req.params.id)}})
         .toArray((err, docs) => {
@@ -64,7 +66,7 @@ router.get('/id/:id', async(req, res)=> {
  * Informa um prato que tem o nome pedido e um tempo de preparo maior que 10 minutos
  * e diferente de 40 minutos
  */
-router.get('/nome/:nome', async(req, res) => {
+router.get('/nome/:nome', auth, async(req, res) => {
     try{
         db.collection(nomeCollection).find({$and:[{'tempo_preparo':{$gt:10, $ne:40}},{'nome':{$regex: req.params.nome, $options: "i"}}]}).sort({nome: 1}).toArray((err, docs) => {
             if(!err){
@@ -87,7 +89,7 @@ router.get('/nome/:nome', async(req, res) => {
  * Apaga o prato pelo id
  */
 
-router.delete('/:id', async(req, res) => {
+router.delete('/:id', auth, async(req, res) => {
     await db.collection(nomeCollection)
     .deleteOne({"_id": { $eq: ObjectId(req.params.id)}})
     .then(result => res.status(200).send(result))
@@ -98,7 +100,7 @@ router.delete('/:id', async(req, res) => {
  * POST /api/pratos
  * Insere um novo prato
  */
-router.post('/', validaPrato, async(req, res) => {
+router.post('/', auth, validaPrato, async(req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()){
         return res.status(400).json(({
@@ -116,7 +118,7 @@ router.post('/', validaPrato, async(req, res) => {
  * PUT /api/pratos
  * Altera um prato
  */
-router.put('/', validaPrato, async(req, res) => {
+router.put('/', auth, validaPrato, async(req, res) => {
     let idDocumento = req.body._id //armazenando o id do documento
     delete req.body._id //iremos remover o id do body
     const errors = validationResult(req)

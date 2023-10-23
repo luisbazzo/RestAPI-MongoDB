@@ -47,6 +47,7 @@ const validaUsuario = [
         .default('Cliente')
         .isIn(['Admin', 'Cliente']).withMessage('O tipo do usuário deve ser Admin ou Cliente'),
     check('avatar')
+        .optional({nullable: true}) //permitir usuário sem avatar
         .isURL().withMessage('O endereço do Avatar deve ser uma URL válida')
 ]
 
@@ -69,6 +70,114 @@ router.post('/', validaUsuario, async(req, res) => {
              .insertOne(req.body)
              .then(result => res.status(201).send(result))
              .catch(err => res.status(400).json(err))
+    }
+})
+
+/************************************************************** 
+ * POST /usuarios/login
+ * Efetua o login do usuário e retorna o token JWT
+***************************************************************/ 
+
+const validaLogin = [
+    check('email')
+     .not().isEmpty().trim().withMessage('O email é obrigatório!')
+     .isEmail().withMessage('Informe um e-mail válido'),
+    check('senha')
+     .not().isEmpty().trim().withMessage('A senha é obrigatória!')
+     .isLength({min:6}).withMessage('A senha deve ter no mínimo 6 caracteres')
+]
+
+router.post('/login', validaLogin, async(req, res) => {
+    const schemaErrors = validationResult(req)
+    if(!schemaErrors.isEmpty()){
+        return res.status(403).json(({errors: schemaErrors.array()}))
+    }
+    //obtendo os valores de login
+    const {email, senha} = req.body
+    try{
+        //Verificando se o email informado existe no MongoDB
+        let usuario = await db.collection(nomeCollection)
+                            .find({email}).limit(1).toArray()
+        //Se o array estiver vazio, é que o email não existe
+        if(!usuario.length)
+            return res.status(404).json({
+                errors: [{value: `${email}`,
+                          msg: 'O email informado não está cadastrado',
+                          param: 'email'}]
+            })
+        //Se o email existir, comparamos se a senha está correta
+        const isMatch = await bcrypt.compare(senha, usuario[0].senha)
+        if(!isMatch)
+            return res.status(403).json({
+                errors: [{
+                          value: `senha`,
+                          msg: 'A senha informada está incorreta',
+                          param: 'senha'}]
+            })
+        //Iremos gerar o token JWT
+        jwt.sign(
+            {usuario: {id: usuario[0]._id}},
+            process.env.SECRET_KEY,
+            {expiresIn: process.env.EXPIRES_IN},
+            (err, token) => {
+                if(err) throw err
+                res.status(200).json({
+                    access_token: token
+                })
+            }
+        )        
+    } catch(e){
+        console.error(e)
+    }
+})
+
+/*************************************************************** 
+ * GET /usuarios
+ * Lista todos os usuários. Necessita do token
+****************************************************************/
+router.get('/', auth, async(req, res) => {
+    try{
+        db.collection(nomeCollection)
+         .find({}, {projection: {senha: false}})
+         .sort({nome:1})
+         .toArray((err, docs) => {
+            if(!err){ res.status(200).json(docs)}
+         })
+    } catch (err){
+        res.status(500).json({erros: 
+            [{msg: 'Erro ao obter a listagem de usuários'}]})
+    }
+})
+
+/*************************************************************
+ * DELETE /usuarios/id
+ * Remove o usuário pelo id. Necessita do token
+**************************************************************/ 
+router.delete('/:id', auth, async(req, res)=>{
+    await db.collection(nomeCollection)
+     .deleteOne({'_id': {$eq: ObjectId(req.params.id)}})
+     .then(result => res.status(202).send(result)) //accepted
+     .catch(err => res.status(400).json(err)) //bad request
+})
+
+/*************************************************************
+ * PUT /usuarios/id
+ * Altera os dados do usuário pelo id. Necessita do token
+**************************************************************/ 
+router.put('/:id', validaUsuario, auth, async(req, res) => {
+    const schemaErrors = validationResult(req)
+    if(!schemaErrors.isEmpty()){
+        return res.status(403).json({
+            errors: schemaErrors.array()
+        })
+    }
+    else{
+        await db.collection(nomeCollection)
+         .updateOne({'_id': {$eq: ObjectId(req.params.id)}},
+         { $set: req.body }
+         )
+         .then(result => res.status(202).send(result))
+         .catch(err => res.status(400).json(err))
     }
 })
 

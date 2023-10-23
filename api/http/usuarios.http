@@ -1,16 +1,54 @@
 //Teste do endpoint usuarios
 
-@baseURL = https://localhost:2002/api/usuarios
+@baseURL = http://localhost:2002/api/usuarios
 
+// POST 
 ###
 POST {{baseURL}}
 Content-Type: application/json
 
 {
-    "nome": "Lucas Santos",
-    "email": "lucassantos@lucassantos.com",
-    "senha": "luca$S4ntos",
+    "nome": "Rodrigo Goes",
+    "email": "rodrigogoes@wnbf.com",
+    "senha": "F4KeN@TTY",
     "ativo": true,
     "tipo": "Cliente",
-    "avatar": "https://ui-avatars.com/api/?name=Lucas+Santos"
+    "avatar": "https://ui-avatars.com/api/?name=Rodrigo+Goes"
+}
+
+// POST - Efetuar o login
+###
+POST {{baseURL}}/login
+Content-Type: application/json
+
+{
+    "email": "lucassantos@lucassantos.com",
+    "senha": "luca$S4ntos"
+}
+
+// GET - Obtem os usuários
+###
+GET {{baseURL}}
+Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjczZTFkOTBiODIzM2U0Y2JkZjFhIn0sImlhdCI6MTY5ODA3MjA0NCwiZXhwIjoxNjk4MTUxMjQ0fQ.yucdMWZgZnnCnihmH8BwSLSsFawhB6PIt3hJRc0QLdA
+
+// DELETE - Remove o usuário pelo id
+###
+DELETE {{baseURL}}/652d41980328942b64b85a02
+Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjczZTFkOTBiODIzM2U0Y2JkZjFhIn0sImlhdCI6MTY5ODA3MjA0NCwiZXhwIjoxNjk4MTUxMjQ0fQ.yucdMWZgZnnCnihmH8BwSLSsFawhB6PIt3hJRc0QLdA
+
+//PUT - Edita o usuário pelo id
+###
+PUT {{baseURL}}/653689c87d2bccdad719a5df
+Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjczZTFkOTBiODIzM2U0Y2JkZjFhIn0sImlhdCI6MTY5ODA3MjA0NCwiZXhwIjoxNjk4MTUxMjQ0fQ.yucdMWZgZnnCnihmH8BwSLSsFawhB6PIt3hJRc0QLdA
+
+{
+    "nome": "Rodrigo Góes",
+    "email": "rodrigogoes@wnbf.com",
+    "senha": "F4KeN@TTY",
+    "ativo": true,
+    "tipo": "Cliente",
+    "avatar": "https://ui-avatars.com/api/?name=Rodrigo+Goes"
 }

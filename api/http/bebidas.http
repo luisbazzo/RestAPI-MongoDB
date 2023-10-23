@@ -4,27 +4,32 @@
 // GET - Lista todas as bebidas
 GET {{baseURL}}
 Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjczZTFkOTBiODIzM2U0Y2JkZjFhIn0sImlhdCI6MTY5ODA3MjA0NCwiZXhwIjoxNjk4MTUxMjQ0fQ.yucdMWZgZnnCnihmH8BwSLSsFawhB6PIt3hJRc0QLdA
 
 ###
 // GET - Lista uma bebida pelo id
 GET {{baseURL}}/id/6519fe966d3fa74259f918a0
 Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjczZTFkOTBiODIzM2U0Y2JkZjFhIn0sImlhdCI6MTY5ODA3MjA0NCwiZXhwIjoxNjk4MTUxMjQ0fQ.yucdMWZgZnnCnihmH8BwSLSsFawhB6PIt3hJRc0QLdA
 
 ###
 // GET - Lista uma bebida que tenha um preço maior que 20 e menor que 50 com
 // base no nome fornecido
 GET {{baseURL}}/nome/whis
 Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjczZTFkOTBiODIzM2U0Y2JkZjFhIn0sImlhdCI6MTY5ODA3MjA0NCwiZXhwIjoxNjk4MTUxMjQ0fQ.yucdMWZgZnnCnihmH8BwSLSsFawhB6PIt3hJRc0QLdA
 
 ###
 // DELETE - Apaga uma bebida pelo id
 DELETE {{baseURL}}/651a03386cda59678efcc8db
 Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjczZTFkOTBiODIzM2U0Y2JkZjFhIn0sImlhdCI6MTY5ODA3MjA0NCwiZXhwIjoxNjk4MTUxMjQ0fQ.yucdMWZgZnnCnihmH8BwSLSsFawhB6PIt3hJRc0QLdA
 
 ###
 // POST - Insere uma nova bebida
 POST {{baseURL}}
 Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjczZTFkOTBiODIzM2U0Y2JkZjFhIn0sImlhdCI6MTY5ODA3MjA0NCwiZXhwIjoxNjk4MTUxMjQ0fQ.yucdMWZgZnnCnihmH8BwSLSsFawhB6PIt3hJRc0QLdA
 
 {
     "nome": "whisky",
@@ -38,6 +43,7 @@ Content-Type: application/json
 // PUT - Altera uma bebida
 PUT {{baseURL}}
 Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjczZTFkOTBiODIzM2U0Y2JkZjFhIn0sImlhdCI6MTY5ODA3MjA0NCwiZXhwIjoxNjk4MTUxMjQ0fQ.yucdMWZgZnnCnihmH8BwSLSsFawhB6PIt3hJRc0QLdA
 
 {
     "_id": "6519fe966d3fa74259f918a0",

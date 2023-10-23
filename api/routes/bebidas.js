@@ -6,6 +6,8 @@ const router = express.Router()
 const {db, ObjectId} = await connectToDatabase()
 const nomeCollection = 'bebidas'
 
+import auth from '../middleware/auth.js'
+
 const validaBebida = [
     check('data_adição')
     .isLength({min: 10, max: 10}).withMessage('A data deve seguir o padrão aaaa-mm-dd'),
@@ -20,7 +22,7 @@ const validaBebida = [
  * GET /api/bebidas
  * Lista todas as bebidas oferecidas pelo restaurante
  */
-router.get('/', async(req, res) => {
+router.get('/', auth, async(req, res) => {
     try{
         db.collection(nomeCollection).find().sort({nome: 1}).toArray((err, docs) => {
             if(!err){
@@ -42,7 +44,7 @@ router.get('/', async(req, res) => {
  * GET /api/bebidas/id/:id
  * Lista uma bebida pelo id
  */
-router.get('/id/:id', async(req, res)=> {
+router.get('/id/:id', auth, async(req, res)=> {
     try{
         db.collection(nomeCollection).find({'_id': {$eq: ObjectId(req.params.id)}})
         .toArray((err, docs) => {
@@ -61,7 +63,7 @@ router.get('/id/:id', async(req, res)=> {
  * GET com operadores do MongoDB /api/bebidas/nome/:nome
  * Informa uma bebida que tem o nome pedido e um preço maior que 20 e menor que 50
  */
-router.get('/nome/:nome', async(req, res) => {
+router.get('/nome/:nome', auth, async(req, res) => {
     try{
         db.collection(nomeCollection).find({$and:[{'preço':{$gt:20, $lt:50}},{'nome':{$regex: req.params.nome, $options: "i"}}]}).sort({nome: 1}).toArray((err, docs) => {
             if(!err){
@@ -83,7 +85,7 @@ router.get('/nome/:nome', async(req, res) => {
  * DELETE /api/bebidas/:id
  * Apaga a bebida pelo id
  */
-router.delete('/:id', async(req, res) => {
+router.delete('/:id', auth, async(req, res) => {
     await db.collection(nomeCollection)
     .deleteOne({"_id": { $eq: ObjectId(req.params.id)}})
     .then(result => res.status(200).send(result))
@@ -94,7 +96,7 @@ router.delete('/:id', async(req, res) => {
  * POST /api/bebidas
  * Insere uma nova bebida
  */
-router.post('/', validaBebida, async(req, res) => {
+router.post('/', auth, validaBebida, async(req, res) => {
     const errors = validationResult(req)
     if (!errors.isEmpty()){
         return res.status(400).json(({
@@ -112,7 +114,7 @@ router.post('/', validaBebida, async(req, res) => {
  * PUT /api/bebidas
  * Altera uma bebida
  */
-router.put('/', validaBebida, async(req, res) => {
+router.put('/', auth, validaBebida, async(req, res) => {
     let idDocumento = req.body._id //armazenando o id do documento
     delete req.body._id //iremos remover o id do body
     const errors = validationResult(req)

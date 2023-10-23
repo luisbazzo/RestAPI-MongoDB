@@ -4,27 +4,32 @@
 // GET - Lista todos os pratos
 GET {{baseURL}}
 Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjczZTFkOTBiODIzM2U0Y2JkZjFhIn0sImlhdCI6MTY5ODA3MjA0NCwiZXhwIjoxNjk4MTUxMjQ0fQ.yucdMWZgZnnCnihmH8BwSLSsFawhB6PIt3hJRc0QLdA
 
 ###
 // GET - Lista um prato pelo id
 GET {{baseURL}}/id/6519fc9afe5941692be89f0c
 Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjczZTFkOTBiODIzM2U0Y2JkZjFhIn0sImlhdCI6MTY5ODA3MjA0NCwiZXhwIjoxNjk4MTUxMjQ0fQ.yucdMWZgZnnCnihmH8BwSLSsFawhB6PIt3hJRc0QLdA
 
 ###
 // GET - Lista um prato que tem o nome informado e um tempo de preparo maior que 10 minutos
 // e diferente de 40 minutos
 GET {{baseURL}}/nome/pic
 Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjczZTFkOTBiODIzM2U0Y2JkZjFhIn0sImlhdCI6MTY5ODA3MjA0NCwiZXhwIjoxNjk4MTUxMjQ0fQ.yucdMWZgZnnCnihmH8BwSLSsFawhB6PIt3hJRc0QLdA
 
 ###
 // DELETE - Apaga um prato pelo id
 DELETE {{baseURL}}/651a058c6cda59678efcc8dd
 Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjczZTFkOTBiODIzM2U0Y2JkZjFhIn0sImlhdCI6MTY5ODA3MjA0NCwiZXhwIjoxNjk4MTUxMjQ0fQ.yucdMWZgZnnCnihmH8BwSLSsFawhB6PIt3hJRc0QLdA
 
 ###
 // POST - Insere um novo prato
 POST {{baseURL}}
 Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjczZTFkOTBiODIzM2U0Y2JkZjFhIn0sImlhdCI6MTY5ODA3MjA0NCwiZXhwIjoxNjk4MTUxMjQ0fQ.yucdMWZgZnnCnihmH8BwSLSsFawhB6PIt3hJRc0QLdA
 
 {
     "nome": "picanha",
@@ -40,6 +45,7 @@ Content-Type: application/json
 // PUT - Altera um prato
 PUT {{baseURL}}
 Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjczZTFkOTBiODIzM2U0Y2JkZjFhIn0sImlhdCI6MTY5ODA3MjA0NCwiZXhwIjoxNjk4MTUxMjQ0fQ.yucdMWZgZnnCnihmH8BwSLSsFawhB6PIt3hJRc0QLdA
 
 {
     "_id": "6519fc9afe5941692be89f0c",
