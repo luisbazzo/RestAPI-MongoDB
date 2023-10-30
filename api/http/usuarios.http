@@ -30,7 +30,7 @@ Content-Type: application/json
 ###
 GET {{baseURL}}
 Content-Type: application/json
-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjczZTFkOTBiODIzM2U0Y2JkZjFhIn0sImlhdCI6MTY5ODA3MjA0NCwiZXhwIjoxNjk4MTUxMjQ0fQ.yucdMWZgZnnCnihmH8BwSLSsFawhB6PIt3hJRc0QLdA
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjUzNjczZTFkOTBiODIzM2U0Y2JkZjFhIn0sImlhdCI6MTY5ODY3OTE0NSwiZXhwIjoxNjk4NzU4MzQ1fQ.0baQwrJ_4LOn7ttrlY8XS_Ei09l_MH3CHsFAMkuIRkk
 
 // DELETE - Remove o usuário pelo id
 ###
