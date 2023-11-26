@@ -1,4 +1,4 @@
-const urlBase = 'http://localhost:2002/api'
+const urlBase = 'https://rest-taurante.vercel.app/api'
  
 //monitorando o submit do formulário
 document.getElementById('loginForm').addEventListener('submit', function(event){
