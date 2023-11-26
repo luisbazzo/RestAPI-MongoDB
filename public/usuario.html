@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>RESTtaurante - RestAPI com MongoDB</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <header>
+                <div class="row">
+                    <div class="col-4 ms-5">
+                        <img src="images/restaurant.png" class="rounded float-start" style="max-width: 120px; max-height: 120px;">
+                        <h2 class="text-center me-5 mt-2 logo" style="color: white; font-size: 50px; font-weight: 500;"><span style="font-size: 75px;" class="logo">REST</span>taurante</h2>
+                    </div>
+                    <div class="col-6 text-end" style="float: right; position: relative; top: 20px; padding: 0 20px;">
+                        <ul style="list-style-type: none; color: white; font-size: 30px; font-weight: 500;">
+                            <li style="position: relative; bottom: -25px; z-index: 777;"><a href="index.html">Log in</a></li>
+                            <li style="position: relative; right: -170px; top: -20px;"><a href="usuario.html">Sign up</a></li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div><!--clear-->
+                </div><!--row-->
+            </header>
+
+            <div class="container">
+                <div class="row justify-content-center mt-5">
+                  <div class="col-6 mt-4">
+                    <!-- Formulário -->
+                    <h4 class="text-black mt-3 text-center fs-2 mb-4">Cadastro de Usuários</h4>
+                    <form id="formUsuario" method="post" class="shadow-lg p-3">
+                      <!-- Id -->  
+                      <input type="hidden" id="id" name="id" />
+                      <!-- Nome -->
+                      <div class="mb-3">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe seu nome" autofocus/>
+                      </div>
+                      <!-- Email -->
+                      <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Informe seu email" />
+                      </div>
+                      <!-- Senha -->
+                      <div class="mb-3">
+                        <label for="senha" class="form-label">Senha</label>
+                        <input type="password" min="0" class="form-control" id="senha" name="senha" placeholder="Informe uma senha" title="Informe uma senha" />            
+                      </div>
+                      <div class="mb-3 row">
+                        <div class="col-md-6">
+                          <label for="tipo" class="form-label">Tipo</label>
+                          <input type="text" class="form-control" id="tipo" name="tipo" required placeholder="Tipo de usuário"/>
+                        </div> <!-- fecha a coluna Tipo -->
+                        <div class="col-md-6">
+                          <label for="avatar" class="form-label">Avatar</label>
+                          <input type="text" class="form-control" id="avatar" name="avatar" placeholder="Link de uma imagem para seu avatar">
+                        </div> <!-- fecha a coluna Preço -->
+                      </div> <!-- fecha a linha -->
+                      <div class="mb-3 row">
+                        <div class="col ms-2 mt-3 mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="ativo" name="ativo">
+                                <label class="form-check-label" for="ativo">
+                                  Você aceita nossos <a href="#" style="text-decoration: none;">termos e condições</a>?
+                                </label>
+                            </div>
+                        </div>
+                      </div> <!--fecha a coluna ativo-->
+                      <!-- Botões-->
+                      <div class="mt-4 mb-2 text-center">
+                        <button class="btn btn-success fs-4" id="cadastrar" type="submit">
+                          <i class="bi bi-save"></i> Cadastrar
+                        </button>
+                      </div>
+                    </form>
+                </div>
+                <div>
+                  <!-- Modal -->
+                  <div class="modal fade" id="modalMensagem" tabindex="-1" role="dialog">
+                    <div class="modal-dialog bg-danger" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-danger">Mensagem</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p id="mensagem"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="bg-black text-white text-center py-3 position-fixed fixed-bottom">
+                &copy; 2023 RESTaurante. Todos os direitos reservados.
+            </footer>
+
+        <script src="js/usuario.js"></script>
+    </body>
+</html>

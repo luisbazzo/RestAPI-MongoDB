@@ -41,6 +41,7 @@ const validaUsuario = [
         .isLength({min:8}).withMessage('A senha deve ter no mínimo 8 caracteres')
         .isStrongPassword({minLength: 8, minLowercase: 1, minUppercase:  1, minSymbols: 1, minNumbers: 1}).withMessage('A senha informada não é segura. Informe no mínimo 1 caractere maiúsculo, 1 caractere minúsculo, 1 número e 1 caractere especial'),
     check('ativo')
+        .optional()
         .default(true)
         .isBoolean().withMessage('O valor deve ser um booleano, true ou false'),
     check('tipo')

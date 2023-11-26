@@ -35,7 +35,7 @@ document.getElementById('formComida').addEventListener('submit', function (event
 })
 
 async function salvaPrato(prato) {    
-    if (prato.hasOwnProperty('_id')) { //Se o prestador tem o id iremos alterar os dados (PUT)
+    if (prato.hasOwnProperty('_id')) { //Se o prato tem o id iremos alterar os dados (PUT)
         // Fazer a solicitação PUT para o endpoint dos pratos
         await fetch(`${urlBase}/pratos`, {
             method: "PUT",
