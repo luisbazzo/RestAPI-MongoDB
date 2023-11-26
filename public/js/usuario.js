@@ -15,8 +15,7 @@ document.getElementById('formUsuario').addEventListener('submit', function (even
             "email": document.getElementById('email').value,
             "senha": document.getElementById('senha').value,
             "ativo": document.getElementById('ativo').checked,
-            "tipo": document.getElementById('tipo').value,
-            "avatar": NULL
+            "tipo": document.getElementById('tipo').value
         }
     } else {
         usuario = {
@@ -24,8 +23,7 @@ document.getElementById('formUsuario').addEventListener('submit', function (even
             "email": document.getElementById('email').value,
             "senha": document.getElementById('senha').value,
             "ativo": document.getElementById('ativo').checked,
-            "tipo": document.getElementById('tipo').value,
-            "avatar": NULL
+            "tipo": document.getElementById('tipo').value
         }
     }
     salvaUsuario(usuario)
