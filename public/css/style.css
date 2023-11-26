@@ -1,0 +1,20 @@
+body{
+    background-image: url('../images/fundo.jpg');
+    background-size: cover; /* Para cobrir toda a área visível */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+}
+
+.clear{
+    clear: both;
+}
+
+ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+@media screen and (max-width:1650px) {
+    .logo{
+        display: none;
+    }
+}

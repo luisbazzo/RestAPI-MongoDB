@@ -9,13 +9,35 @@ const nomeCollection = 'bebidas'
 import auth from '../middleware/auth.js'
 
 const validaBebida = [
-    check('data_adição')
-    .isLength({min: 10, max: 10}).withMessage('A data deve seguir o padrão aaaa-mm-dd'),
-    check('nome')
-    .not().isEmpty().trim().withMessage('É obrigatório informar o nome!'),
-    check('qtde_ml')
-    .isNumeric().withMessage('A quantidade é medida em Ml e deve ser um número inteiro!'),
-    check('tipo').optional({nullable: true})
+    check("nome")
+     .not()
+     .isEmpty()
+     .trim()
+     .withMessage("É obrigatório informar o nome da bebida"),
+    check("qtde_ml")
+     .isInt({ min: 1 })
+     .withMessage("A quantidade em mililitros deve ser um número inteiro maior que zero"),
+    check("data_adição")
+     .not()
+     .isEmpty()
+     .trim()
+     .withMessage("É obrigatório informar a data de adição")
+     .custom((value) => {
+     // Valide o formato da data (yyyy-mm-dd)
+      const regexDate = /^\d{4}-\d{2}-\d{2}$/;
+      if (!regexDate.test(value)) {
+         throw new Error("Formato de data inválido. Use o formato yyyy-mm-dd.");
+      }
+      return true;
+     }),
+    check("tipo")
+     .not()
+     .isEmpty()
+     .trim()
+     .withMessage("É obrigatório informar o tipo"),
+    check("preço")
+     .isNumeric()
+     .withMessage("O campo 'preço' deve ser um numero!")
 ];
 
 /**

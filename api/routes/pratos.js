@@ -9,15 +9,45 @@ const nomeCollection = 'pratos'
 import auth from '../middleware/auth.js'
 
 const validaPrato = [
-    check('data_cardapio')
-    .isLength({min: 10, max: 10}).withMessage('A data deve seguir o padrão aaaa-mm-dd'),
-    check('nome')
-    .not().isEmpty().trim().withMessage('É obrigatório informar o nome!'),
-    check('tempo_preparo')
-    .isNumeric().withMessage('O tempo de preparo é medido em minutos e deve ser um número inteiro!'),
-    check('cozinheiro')
-    .not().isEmpty().trim().withMessage('É necessário informar o nome do cozinheiro(a)!'),
-    check('tipo').optional({nullable: true})
+    check("nome")
+     .not()
+     .isEmpty()
+     .trim()
+     .withMessage("É obrigatório informar o nome do prato"),
+    check("origem")
+     .not()
+     .isEmpty()
+     .trim()
+     .withMessage("É obrigatório informar a origem do prato"),
+    check("cozinheiro")
+     .not()
+     .isEmpty()
+     .trim()
+     .withMessage("É obrigatório informar o cozinheiro"),
+    check("tempo_preparo")
+     .isInt({ min: 1 })
+     .withMessage("O tempo de preparo deve ser um número inteiro maior que zero"),
+    check("data_cardapio") 
+     .not()
+     .isEmpty()
+     .trim()
+     .withMessage("É obrigatório informar a data do cardápio")
+     .custom((value) => {
+     // Valide o formato da data (yyyy-mm-dd)
+      const regexDate = /^\d{4}-\d{2}-\d{2}$/;
+      if (!regexDate.test(value)) {
+        throw new Error("Formato de data inválido. Use o formato yyyy-mm-dd.");
+      }
+      return true;
+     }),
+     check("tipo")
+     .not()
+     .isEmpty()
+     .trim()
+     .withMessage("É obrigatório informar o tipo"),
+    check("preço")
+       .isNumeric()
+       .withMessage("O campo 'preço' deve ser um numero!")
 ];
 
 /**
